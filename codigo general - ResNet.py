@@ -9,7 +9,7 @@ import numpy as np
 import os
 
 
-# %% CALCULO MANUAL DE PESOS DE LAS RESNET 18
+# %% CALCULO MANUAL DE PESOS DE LA RESNET 18
 # - - - Ingreso de las imagenes - - - 
 Entrada = 64 * 3 * 7 * 7  # = 9408
 Batch0 = 64 * 2
@@ -78,7 +78,7 @@ print(f"\nResultado con FC: {ResultadoConFC}") # = 11689512
 
 #%%
 
-image_path = r"C:/Users/gmartinelli/Downloads/imagendeprueba.jpg" # <-- Entre las comillas se tiene que poner la ruta exacta de la imagen (No importa el tamaño ya que luego se aplica un resize)
+image_path = r"" # <-- Entre las comillas se tiene que poner la ruta exacta de la imagen (No importa el tamaño ya que luego se aplica un resize).
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = models.resnet18(pretrained=True).to(device)
@@ -94,7 +94,7 @@ transform = transforms.Compose([
 img_pil = Image.open(image_path).convert('RGB')
 x = transform(img_pil).unsqueeze(0).to(device)
 
-canal = 29
+canal = 29 # <-- Se puede poner cualquier canal si está dentro del límite de canales que tiene el feature map.
 
 out = model.conv1(x)
 out = model.bn1(out)
@@ -178,5 +178,6 @@ if torch.allclose(suma_manual, add_resnet, rtol=1e-5, atol=1e-8):
 #%%
 
 summary(model, (3, 224, 224))
+
 
 print(model)
