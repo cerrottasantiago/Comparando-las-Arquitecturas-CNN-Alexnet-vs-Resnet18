@@ -28,6 +28,10 @@ La CNN que empezó con este avance fue AlexNet que redujo la tasa del Top-5 de I
 
 - “Cuando las redes más profundas logran converger, aparece un problema de degradación: al aumentar la profundidad, la precisión se satura y luego disminuye rápidamente, y sorprendentemente esto no se debe al sobreajuste.” - Traducción al español de la cita textual.
 
+### ¿Qué ResNet se utilizará?
+
+<a href="https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf" TARGET="_BLANK">ResNet18:</a> Propuesta por Kaiming He, Xiangyu Zhang, Shaoqing Ren y Jian Sun en 2015. ResNet 18 es una de las variantes más pequeñas y populares.
+
 
 <div align="center">
 	<img src="img/cifar-10.png">
