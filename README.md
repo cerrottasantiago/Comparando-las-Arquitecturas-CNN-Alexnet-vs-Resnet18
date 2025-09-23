@@ -98,10 +98,12 @@ Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus cone
 
 
 
-<div align="center">
-	<img src="img/cifar-10.png">
-	<em> Figura 1 - Arquitectura Cifar-10 donde se evidencian las diferentes capas con las dimensiones de sus componentes </em>
+<div align="center" justify-content="center">
+	<img src="img/resnet18-esquema-completo.png">
 </div>
+	 <p align="center" text-align="center" justify-content="center"><em> Figura 1 - Arquitectura de ResNet18 con imagenes del proceso de su feature map </em></p>
+	
+
 	
 ### 3. Tamaño de los filtros y mapas de características 
 
