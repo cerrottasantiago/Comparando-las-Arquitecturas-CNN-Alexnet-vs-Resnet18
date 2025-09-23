@@ -53,12 +53,48 @@ Las redes neuronales profundas a menudo sufren un problema de "degradación", do
 A continuación se realizará una breve descripción con las características principales de los elementos que se encuentran presentes en la arquitectura de la ResNet18.
 
 ### Bloque Inicial:
-* Input: Imagen RGB (3 canales, ej: 224x224 píxeles).
-* 7x7 conv, 64, stride 2  (reduce tamaño espacial a la mitad: ej: 224x224 → 112x112):
- ** Capa convolucional: Filtros 7x7 que extraen características básicas (bordes, texturas).
- ** Salida: 64 mapas de características (como "fotocopias mejoradas" de la imagen original).
-* Maxpool, stride 2.
 
+- *Input:* Imagen RGB (3 canales, ej: 224x224 píxeles).
+- *7x7 conv, 64, stride 2*  (reduce tamaño espacial a la mitad: ej: 224x224 → 112x112)*:*
+  - *Capa convolucional:* Filtros 7x7 que extraen características básicas (bordes, texturas).
+  - *Salida:* 64 mapas de características (como "fotocopias mejoradas" de la imagen original).
+- Maxpool, stride 2.
+
+### Bloques Residuales:
+
+Cada grupo de 2 capas forma un bloque residual. Las flechas de *"atajo"* (↙) suman la entrada directa a la salida:
+
+[Entrada] → 3x3 conv → ReLU → 3x3 conv → [+] → Salida  
+
+`      `⇘\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_⇗  (Conexión residual) 
+
+- *Bloque 1 (64 canales):*
+  - 3x3 conv, 64 → 3x3 conv, 64 → Suma con entrada.
+  - (Se repite 2 veces más).
+
+- *Bloque 2 (128 canales, /2 = downsample (logrado con el stride 2)):*
+  - 3x3 conv, 128, stride 2.
+  - 3x3 conv, 128 → Suma con entrada adaptada al nuevo tamaño del feature map).
+
+- *Bloque 3 (256 canales, /2):*
+  - Mismo patrón: Reducción del tamaño espacial más aprendizaje residual.
+
+- *Bloque 4 (512 canales, /2):*
+  - Capa final con mayor profundidad de características (patrones complejos como formas globales).
+
+### Capas Finales:
+
+- ***Avg pool***: *Global Average Pooling*:
+  - Reduce cada mapa de características 512x7x7 → 512x1x1 (promedia todos los píxeles).
+  - Ventaja: Elimina necesidad de capas FC enormes (como en AlexNet).
+- **FC**: *Capa totalmente conectada*:
+  - Convierte las 512 características en scores para cada clase (ej: 1000 clases en ImageNet).
+- **Softmax**: 
+  - Convierte scores en probabilidades (ej: "90% perro, 5% gato").
+
+
+## Esquema
+Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus conexiones y en donde se pueden visualizar los features maps en los primeros 4 bloques para ayudar a comprender su funcionamiento. En especial, para entender la forma del Residuo.
 
 
 
