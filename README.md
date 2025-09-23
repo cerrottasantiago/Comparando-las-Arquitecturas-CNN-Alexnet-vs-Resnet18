@@ -103,108 +103,94 @@ Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus cone
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 1 - Arquitectura de ResNet18 con imagenes del proceso de su feature map </em></p>
 	
-En este gráfico se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet:
+
+
+<div align="center" justify-content="center">
+	<img src="img/Add-Resnet.png">
+</div>
+	 <p align="center" text-align="center" justify-content="center"><em> Figura 2 - Suma residual de los feature map en ResNet </em></p>
+
+En este gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet:
 	
-### 3. Tamaño de los filtros y mapas de características 
+## Summary
 
-La principal operación que realiza una red neuronal convolucional es la convolución. Esta operación es la que da origen a los llamados mapas de características, es decir, a un conjunto de píxeles que guarda una relación con la imagen de entrada. 
+|Layer (type)|Output Shape|Cálculos|Param #|
+| :- | :- | :- | :- |
+|Conv2d-1|[-1, 64, 112, 112]|64 \* 3 \* 7 \* 7|9,408|
+|BatchNorm2d-2|[-1, 64, 112, 112]|` `64 \* 2|128|
+|ReLU-3|[-1, 64, 112, 112] |-|0|
+|MaxPool2d-4|[-1, 64, 56, 56]|-|0|
+|Conv2d-5|[-1, 64, 56, 56]|64 \* 64 \* 3 \* 3|36,864|
+|BatchNorm2d-6|[-1, 64, 56, 56]|64 \* 2|128|
+|ReLU-7|[-1, 64, 56, 56]|-|0|
+|Conv2d-8|[-1, 64, 56, 56]|64 \* 64 \* 3 \* 3|36,864|
+|BatchNorm2d-9|[-1, 64, 56, 56]|64 \* 2|128|
+|ReLU-10|[-1, 64, 56, 56]|-|0|
+|BasicBlock-11|[-1, 64, 56, 56]|-|0|
+|Conv2d-12|[-1, 64, 56, 56]|64 \* 64 \* 3 \* 3|36,864|
+|BatchNorm2d-13|[-1, 64, 56, 56]|64 \* 2 |128|
+|ReLU-14|[-1, 64, 56, 56]|-|0|
+|Conv2d-15|[-1, 64, 56, 56]|64 \* 64 \* 3 \* 3|36,864|
+|BatchNorm2d-16|[-1, 64, 56, 56]|64 \* 2|128|
+|ReLU-17|[-1, 64, 56, 56]|-|0|
+|BasicBlock-18|[-1, 64, 56, 56]|-|0|
+|Conv2d-19|[-1, 128, 28, 28]|128 \* 64 \* 3 \* 3|73,728|
+|BatchNorm2d-20|[-1, 128, 28, 28]|128 \* 2|256|
+|ReLU-21|[-1, 128, 28, 28]|-|0|
+|Conv2d-22|[-1, 128, 28, 28]|128 \* 128 \* 3 \* 3|147,456|
+|BatchNorm2d-23|[-1, 128, 28, 28]|128 \* 2|256|
+|Conv2d-24|[-1, 128, 28, 28]|128 \* 64 \* 1 \* 1|8,192|
+|BatchNorm2d-25|[-1, 128, 28, 28]|128 \* 2|256|
+|ReLU-26|[-1, 128, 28, 28]|-|0|
+|BasicBlock-27|[-1, 128, 28, 28]|-|0|
+|Conv2d-28|[-1, 128, 28, 28]|128 \* 128 \* 3 \* 3|147,456|
+|BatchNorm2d-29|[-1, 128, 28, 28]|128 \* 2|256|
+|ReLU-30|[-1, 128, 28, 28]|-|0|
+|Conv2d-31|[-1, 128, 28, 28]|128 \* 128 \* 3 \* 3|147,456|
+|BatchNorm2d-32|[-1, 128, 28, 28]|128 \* 2|256|
+|ReLU-33|[-1, 128, 28, 28]|-|0|
+|BasicBlock-34|[-1, 128, 28, 28]|-|0|
+|Conv2d-35|[-1, 256, 14, 14]|256 \* 128 \* 3 \* 3|294,912|
+|BatchNorm2d-36|[-1, 256, 14, 14]|` `256 \* 2|512|
+|ReLU-37|[-1, 256, 14, 14]|-|0|
+|Conv2d-38|[-1, 256, 14, 14]|256 \* 256 \* 3 \* 3|589,824|
+|BatchNorm2d-39|[-1, 256, 14, 14]|256 \* 2|512|
+|Conv2d-40|[-1, 256, 14, 14]|256 \* 128 \* 1 \* 1|32,768|
+|BatchNorm2d-41|[-1, 256, 14, 14]|256 \* 2|512|
+|ReLU-42|[-1, 256, 14, 14]|-|0|
+|BasicBlock-43|[-1, 256, 14, 14]|-|0|
+|Conv2d-44|[-1, 256, 14, 14]|256 \* 256 \* 3 \* 3|589,824|
+|BatchNorm2d-45|[-1, 256, 14, 14]|256 \* 2|512|
+|ReLU-46|[-1, 256, 14, 14]|-|0|
+|Conv2d-47|[-1, 256, 14, 14]|256 \* 256 \* 3 \* 3|589,824|
+|BatchNorm2d-48|[-1, 256, 14, 14]|256 \* 2|512|
+|ReLU-49|[-1, 256, 14, 14]|-|0|
+|BasicBlock-50|[-1, 256, 14, 14]|-|0|
+|Conv2d-51|[-1, 512, 7, 7]|512 \* 256 \* 3 \* 3|1,179,648|
+|BatchNorm2d-52|[-1, 512, 7, 7]|` `512 \* 2|1,024|
+|ReLU-53|[-1, 512, 7, 7]|-|0|
+|Conv2d-54|[-1, 512, 7, 7]|512 \* 512 \* 3 \* 3|2,359,296|
+|BatchNorm2d-55|[-1, 512, 7, 7]|512 \* 2|1,024|
+|Conv2d-56|[-1, 512, 7, 7]|512 \* 256 \* 1 \* 1|131,072|
+|BatchNorm2d-57|[-1, 512, 7, 7]|512 \* 2|1,024|
+|ReLU-58|[-1, 512, 7, 7]|-|0|
+|BasicBlock-59|[-1, 512, 7, 7]|-|0|
+|Conv2d-60|[-1, 512, 7, 7]|512 \* 512 \* 3 \* 3|2,359,296|
+|BatchNorm2d-61|[-1, 512, 7, 7]|512 \* 2|1,024|
+|ReLU-62|[-1, 512, 7, 7]|-|0|
+|Conv2d-63|[-1, 512, 7, 7]|512 \* 512 \* 3 \* 3|2,359,296|
+|BatchNorm2d-64|[-1, 512, 7, 7]|512 \* 2|1,024|
+|ReLU-65|[-1, 512, 7, 7]|-|0|
+|BasicBlock-66|[-1, 512, 7, 7]|-|0|
+|AdaptiveAvgPool2d-67|[-1, 512, 1, 1]|-|0|
+|Linear-68|[-1, 1000]|512 \* 1000 + 1000|513,000|
+|Total params|11,689,512|||
 
-La convolución se realiza en principio con la imagen que recibe la CNN y el primer filtro para dar como resultado un mapa de características que tendrá las siguientes dimensiones (figura 2):
+## Conclusión
 
-Alto y largo: Igual a la de la imagen de entrada (INPUT)
-Profundidad (Cantidad de canales): Será igual a la cantidad de filtros que integren cada capa de convolución. 
+Comprender el funcionamiento de la ResNet nos permitió desarrollar un entendimiento general sobre redes neuronales convolucionales. Entendimos cómo funcionan los filtros, la cantidad de pesos asociadas a cada capa, como acceder a sus mapas de características, problemáticas asociadas a este tipo de redes como el degradamiento y los objetivos de cada bloque o capa dentro de la arquitectura.
 
-<div align="center">
-	<img src="img/Layer1.png">
-	<em> Figura 2 </em>
-</div>
 
-Luego de creado el primer mapa de característica, la red neuronal convolucional procede a crear más mapas de características, tantos como capas tenga la arquitectura de la red. 
+### Fuentes
 
-Si analizamos la cuarta capa dentro de la arquitectura propuesta podemos observar que se realizan operaciones de convolución entre un mapa de características y 64 filtros dando como resultado otro mapa de características con una profundidad de 64. Por lo tanto, la profundidad del mapa de características va a quedar determinada por la cantidad de filtros propuestos por la arquitectura de esa capa.
-
-Como se observa en la figura 3, si convolucionamos el mapa de características de la capa 4 con  el filtro “k” en una determinada posición (h, w) se obtiene un pixel que integrará el canal “k” en otro mapa de características. Los píxeles restantes del canal “k” del feature map serán resultado de desplazar el filtro “k” por el resto del feature map de la capa anterior. Los restantes canales del segundo mapa de características serán resultado de convolucionar y desplazar los restantes filtros de la capa 4 de la red.  
-
-<div align="center">
-	<img src="img/Layer4.png">
-	<em> Figura 3 </em>
-</div>
-
-Resulta interesante que a medida que hay más operaciones de convolución la red neuronal es capaz de detectar más características de la imagen que se busca analizar. Las primeras capas de la red detectan líneas, curvas y a medida que agregamos más capas se podrán identificar formas cada vez más complejas. Esto dependerá del problema que queramos abordar, no es lo mismo clasificar imágenes de ratones y elefantes que clasificar imágenes de personas por su rango etario. 
-
-Cantidad de parámetros a entrenar
-
-Primero veamos cómo se calcula la cantidad de parámetros a aprender en cada tipo de capa y luego calculemos la cantidad de parámetros en nuestro ejemplo.
-
-Para conocer cuántos serán los parámetros a calcular en cada capa de la red convolucional solo basta con multiplicar las dimensiones de un filtro, sumarle 1 por la neurona Bias (se agrega por salida en una conexión entre 2 capas) por la cantidad total de filtros presentes en una capa. 
-
-En nuestro caso tenemos 12 capas:
-
-1. Conv2d: 32 Filtros de 3x3x3, por lo tanto se calcularán (3x3x3+1)x32 = 896 parámetros. 
-2. Conv2d_1: 32 Filtros de 3x3x32, (3x3x32+1)x32 = 9248 parámetros.
-3. Max_pooling2d: No se calculan parámetros.
-4. Conv2d_2: 64 Filtros de 3x3x32, (3x3x32+1)x64 = 18496 parámetros.
-5. Conv2d_3:64 Filtros de 3x3x64, (3x3x64+1)x64 = 36928 parámetros.
-6. Max_pooling2d_1: No se calculan parámetros..
-7. Conv2d_4: 128 Filtros de 3x3x64, (3x3x64+1)x128 = 73856 parámetros.
-8. Conv2d_5: 128 FIltros de 3x3x128, (3x3x128+1)x128 = 147584 parámetros.
-9. Max_pooling2d_2: No se calculan parámetros.
-10. Flatten: No se calculan parámetros.
-11. Dense: (2048+1)x128 = 262272 parámetros. 
-12. Desnse_1: (128+1)x10 = 1290 parámetros.
-
-Para calcular la cantidad de parámetros de las capas de la Fully-Connected Neural Network solo debemos multiplicar la cantidad de neuronas de la capa anterior sumado 1 (bias) a la cantidad de neuronas de la capa densa. 
-
-Para poder conocer la cantidad de parametros por capa de la red neuronal, podemos llamar a la función summary() dentro de nuestro código para conocer el resto de parámetros. 
-
-El siguiente diagrama muestra la salida de la función _summary()_: 
-
-<div align="center">
-	<img src="img/Summary.png">
-</div>
-
-### 5. Operación entre los filtros, la imágen y los mapas de características
-
-Para entender cómo operan las redes convolucionales analizaremos la figura 4 enfocada en la primera capa de la CNN.
-Los cuadrados rojo, verde y azul representan una submatriz de 3x3 de cada uno de los canales de la imágen de entrada de la red neural convolucional (Imagen RGB).
-Los cuadrados amarillos representan cada kernel del primer filtro de la primer capa de la red.
-Cada uno de los valores de la imagen se multiplican uno a uno con los valores de los kernels, es decir, los valores de la submatriz roja se multiplican con los valores del primer kernel y el resultado se suma a la multiplicación entre los valores de la submatriz verde con el segundo kernel del filtro y a su vez este resultado se suma a la multiplicación de los valores de la submatriz azul con los valores del tercer kernel. Luego, se evalúa el resultado en una función de activación (en este ejemplo: RELU) para finalmente sumarle un bias. Por cada filtro que se le aplica a la imagen el bias tomará un valor distinto. 
-
-<div align="center">
-	<img src="img/Operation.png">
-	<em> Figura 4 </em>
-</div>
-
-Los valores de los filtros varían entre -1 y 1, mientras que los valores de la imagen de entrada y los feature maps de la red entre 0 y 1. 
-
-### 6. Visualización de Mapas de Características 
-
-Para poder ganar cierta intuición al momento de trabajar con redes neuronales además de adentrarnos en las características cuantitativas de la CNN, podemos ver qué cualidades posee. 
-	En la figura 5 se puede observar 4 capas que integran a cada uno de los mapas de características de la red neuronal convolucional. Se incluyeron 4 a modo de simplificación, pero la cantidad de capas de cada mapa de característica (número de canales) corresponde a la cantidad de filtros que se aplique por capa. 
-
-<div align="center">
-	<img src="img/cifar-10.png">
-	<img src="img/FeatureMaps.png">
-</div>
-
-### 7. Recursos 
-
-Dentro del repositorio se encuentra: 
-* Cifar-10-CNN.py 
-* Final_model.h5: CNN ya entrenada.  
-* Horse5.png: IMAGE Input.
-* Prediction_cnn.py: Programa que permite clasificar imágenes de la CNN Cifar-10. 
-* Operation_validation.py: Programa para validar el cálculo que realiza internamente la red neuronal. 
-* Visualize_feature_prediction.py: Programa que permite visualizar los mapas de características de toda la red neuronal. 
-
-### 8. Fuentes
-
-_[Neural Network Interpretation](https://christophm.github.io/interpretable-ml-book/neural-networks.html)_
-
-_[Tutorial — How to visualize Feature Maps directly from CNN layers](https://www.analyticsvidhya.com/blog/2020/11/tutorial-how-to-visualize-feature-maps-directly-from-cnn-layers/)_
-
-_[Convolutional Neural Network: Feature Map and Filter Visualization](https://towardsdatascience.com/convolutional-neural-network-feature-map-and-filter-visualization-f75012a5a49c)_
-
-_[How to Visualize Filters and Feature Maps in Convolutional Neural Networks](https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/)_
-
-_[Deep Learning in the Trenches: Understanding Inception Network from Scratch](https://www.analyticsvidhya.com/blog/2018/10/understanding-inception-network-from-scratch/)_
+[[1.] He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 770-778).](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
