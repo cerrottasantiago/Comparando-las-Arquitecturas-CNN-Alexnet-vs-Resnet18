@@ -94,7 +94,7 @@ Cada grupo de 2 capas forma un bloque residual. Las flechas de *"atajo"* (↙) s
 
 
 ## Esquema
-Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus conexiones y en donde se pueden visualizar los features maps en los primeros 4 bloques para ayudar a comprender su funcionamiento. En especial, para entender la forma del Residuo.
+En la figura(1) se muestra el esquema de ResNet18 que incluye parte de su arquitectura, sus conexiones y en donde se pueden visualizar los features maps en los primeros 4 bloques para ayudar a comprender su funcionamiento. En especial, para entender la forma del Residuo.
 
 
 
@@ -102,7 +102,7 @@ Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus cone
 	<img src="img/resnet18-esquema-completo.png">
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 1 - Arquitectura de ResNet18 con imagenes del proceso de su feature map </em></p>
-	
+
 
 
 <div align="center" justify-content="center">
@@ -110,11 +110,13 @@ Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus cone
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 2 - Suma residual de los feature map en ResNet </em></p>
 
-En este gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet:
+En el siguiente gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet.
 	
 ## Summary
 
-|Layer (type)|Output Shape|Cálculos|Param #|
+aquí se muestra como ResNet18 maneja sus parámetros, como los calcula y tambien se muestra el tamaño de salida de los feauture maps.
+
+|Layer (type)|Output Shape|Cálculos|Parámetros |
 | :- | :- | :- | :- |
 |Conv2d-1|[-1, 64, 112, 112]|64 \* 3 \* 7 \* 7|9,408|
 |BatchNorm2d-2|[-1, 64, 112, 112]|` `64 \* 2|128|
@@ -151,7 +153,7 @@ En este gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar
 |ReLU-33|[-1, 128, 28, 28]|-|0|
 |BasicBlock-34|[-1, 128, 28, 28]|-|0|
 |Conv2d-35|[-1, 256, 14, 14]|256 \* 128 \* 3 \* 3|294,912|
-|BatchNorm2d-36|[-1, 256, 14, 14]|` `256 \* 2|512|
+|BatchNorm2d-36|[-1, 256, 14, 14]|256 \* 2|512|
 |ReLU-37|[-1, 256, 14, 14]|-|0|
 |Conv2d-38|[-1, 256, 14, 14]|256 \* 256 \* 3 \* 3|589,824|
 |BatchNorm2d-39|[-1, 256, 14, 14]|256 \* 2|512|
@@ -167,7 +169,7 @@ En este gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar
 |ReLU-49|[-1, 256, 14, 14]|-|0|
 |BasicBlock-50|[-1, 256, 14, 14]|-|0|
 |Conv2d-51|[-1, 512, 7, 7]|512 \* 256 \* 3 \* 3|1,179,648|
-|BatchNorm2d-52|[-1, 512, 7, 7]|` `512 \* 2|1,024|
+|BatchNorm2d-52|[-1, 512, 7, 7]|512 \* 2|1,024|
 |ReLU-53|[-1, 512, 7, 7]|-|0|
 |Conv2d-54|[-1, 512, 7, 7]|512 \* 512 \* 3 \* 3|2,359,296|
 |BatchNorm2d-55|[-1, 512, 7, 7]|512 \* 2|1,024|
