@@ -103,7 +103,7 @@ Se mostrará  esquema de ResNet18 que incluye parte de su arquitectura, sus cone
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 1 - Arquitectura de ResNet18 con imagenes del proceso de su feature map </em></p>
 	
-
+En este gráfico se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet:
 	
 ### 3. Tamaño de los filtros y mapas de características 
 
