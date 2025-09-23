@@ -1,16 +1,33 @@
 ![](img/GFA-logo.png)
 
-# Dimensiones, filtros y operaciones de la Redes Neuronales Convolucionales
+# Informe de ResNet 18
 
-### 1. Objetivo
+## Director
+### Cerrotta Santiago - Grupo de Fotónica Aplicada FRD UTN
 
-Comprender cómo operan los distintos componentes y procesos de una red neuronal convolucional tales como su arquitectura, dimensión de filtros, operaciones aritméticas, conformación de los mapas de características (features maps) y los vínculos entre las diferentes capas. Para, de esta manera, poder diseñar y utilizarlas para procesar una imágen y detectar características de la misma con mayor conocimiento.
 
-### 2. Introducción
 
-Para poder entender las características de una red neuronal convolucional (CNN) resulta una buena idea comenzar por entender cómo operan sus componentes de forma simplificada para luego extrapolar este comportamiento al resto de la estructura. 
+## Estudiantes (Practicas profesionalizantes de la E.E.S.T N°1 “Luciano Reyes”)
 
-En este documento nos centraremos en la arquitectura de la [Cifar-10 CNN provista por Jason Brownlee en su blog Machine Learning Mastery](https://machinelearningmastery.com/how-to-develop-a-cnn-from-scratch-for-cifar-10-photo-classification/) para poder llevar los conceptos teóricos a ejemplos prácticos que resulten fácilmente extrapolables a otros tipos de arquitecturas neuronales. 
+### Laurreaga Sebastián
+### Martinelli Gonzalo
+
+
+## 1. ¿Por qué llevamos a cabo este informe?
+
+Para dar nuestros primeros pasos en redes neuronales convolucionales, decidimos entender el funcionamiento, la arquitectura, los pesos y los feature maps de una de las RNC precursoras, fue así como nos adentramos en la arquitectura de ResNet y nos cautivó su funcionamiento como para dedicarle un informe detallado.
+
+
+## 2. Introducción
+
+### ¿En qué contexto surge la Resnet y cuál fue su gran aporte?
+
+La CNN que empezó con este avance fue AlexNet que redujo la tasa del Top-5 de ImageNet dejándola en 15.3% en el año 2012. Debido a esto se empezaron a crear arquitecturas que incluyen muchas capas, esto hacía que se perdiera información de los features maps, a esto se lo denominó “problema de desvanecimiento de gradiente”. Debido a esto en al año 2015 surgió una CNN llamada ResNet, que implementó la función de identidad usando el residuo de los feature maps así solucionando el problema anteriormente mencionado.
+
+- “When deeper networks are able to start converging, a degradation problem has been exposed: with increasing depth, accuracy saturates and then degrades rapidly, and surprisingly this is not caused by overfitting.” - Cita textual del paper oficial de ResNet[1].
+
+- “Cuando las redes más profundas logran converger, aparece un problema de degradación: al aumentar la profundidad, la precisión se satura y luego disminuye rápidamente, y sorprendentemente esto no se debe al sobreajuste.” - Traducción al español de la cita textual.
+
 
 <div align="center">
 	<img src="img/cifar-10.png">
