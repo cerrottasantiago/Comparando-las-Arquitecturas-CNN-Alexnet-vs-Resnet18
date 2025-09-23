@@ -30,7 +30,7 @@ La CNN que empezó con este avance fue AlexNet que redujo la tasa del Top-5 de I
 
 ### ¿Qué ResNet se utilizará?
 
-<a href="https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf" TARGET="_BLANK">ResNet18:</a> Propuesta por Kaiming He, Xiangyu Zhang, Shaoqing Ren y Jian Sun en 2015. ResNet 18 es una de las variantes más pequeñas y populares.
+<a href="https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf" target="_blank">ResNet18:</a> Propuesta por Kaiming He, Xiangyu Zhang, Shaoqing Ren y Jian Sun en 2015. ResNet 18 es una de las variantes más pequeñas y populares.
 
 
 <div align="center">
