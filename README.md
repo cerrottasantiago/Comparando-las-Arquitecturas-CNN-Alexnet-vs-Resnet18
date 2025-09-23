@@ -24,13 +24,42 @@ Para dar nuestros primeros pasos en redes neuronales convolucionales, decidimos 
 
 La CNN que empezó con este avance fue AlexNet que redujo la tasa del Top-5 de ImageNet dejándola en 15.3% en el año 2012. Debido a esto se empezaron a crear arquitecturas que incluyen muchas capas, esto hacía que se perdiera información de los features maps, a esto se lo denominó “problema de desvanecimiento de gradiente”. Debido a esto en al año 2015 surgió una CNN llamada ResNet, que implementó la función de identidad usando el residuo de los feature maps así solucionando el problema anteriormente mencionado.
 
-- “When deeper networks are able to start converging, a degradation problem has been exposed: with increasing depth, accuracy saturates and then degrades rapidly, and surprisingly this is not caused by overfitting.” - Cita textual del paper oficial de ResNet[1].
+- “When deeper networks are able to start converging, a degradation problem has been exposed: with increasing depth, accuracy saturates and then degrades rapidly, and surprisingly this is not caused by overfitting.” - Cita del paper oficial de ResNet[1].
 
-- “Cuando las redes más profundas logran converger, aparece un problema de degradación: al aumentar la profundidad, la precisión se satura y luego disminuye rápidamente, y sorprendentemente esto no se debe al sobreajuste.” - Traducción al español de la cita textual.
+- “Cuando las redes más profundas logran converger, aparece un problema de degradación: al aumentar la profundidad, la precisión se satura y luego disminuye rápidamente, y sorprendentemente esto no se debe al sobreajuste.” - Traducción al español de la cita.
 
 ### ¿Qué ResNet se utilizará?
 
 <a href="https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf" target="_blank">ResNet18:</a> Propuesta por Kaiming He, Xiangyu Zhang, Shaoqing Ren y Jian Sun en 2015. ResNet 18 es una de las variantes más pequeñas y populares.
+
+
+## Innovaciones clave:
+
+### - Bloques Residuales:
+ResNet introduce los bloques residuales: esto significa que cada bloque aprende solo el residuo (F(x)) necesario para transformar la entrada (x) en la salida deseada (H(x)). La conexión de salto combina x + F(x), preservando información base y permitiendo entrenar redes extremadamente profundas sin degradación.
+
+- “We address the degradation problem by introducing a residual learning framework, where instead of making stacked layers approximate the desired function H(x), we let them approximate the residual function F(x) = H(x) − x, reformulating the mapping as F(x) + x.” - Cita del paper oficial de ResNet[1].
+	
+- “Abordamos el problema de degradación introduciendo un marco de aprendizaje residual, donde en lugar de que las capas apiladas se ajusten directamente a la función deseada H(x), las dejamos aproximar la función residual F(x) = H(x) − x, reformulando el mapeo como F(x) + x.” - Traducción al español de la cita.
+
+### - Solución al Problema de Degradación: 
+Las redes neuronales profundas a menudo sufren un problema de "degradación", donde la precisión de entrenamiento comienza a disminuir después de un cierto punto a medida que se agregan más capas. ResNet abordó este problema al permitir que las capas adicionales aprendan la función identidad, lo que significa que agregar más capas no debería empeorar el rendimiento.
+
+- “The shortcut connections perform identity mapping, and their outputs are added to the outputs of stacked layers; these identity shortcuts introduce neither extra parameters nor additional computational complexity.” - Cita del paper oficial de ResNet[1].
+
+- “Las conexiones de omisión realizan un mapeo de identidad, y sus salidas se suman a las de las capas apiladas; estas conexiones identidad no introducen parámetros extra ni complejidad computacional adicional.” - Traducción al español de la cita.
+
+## Arquitectura de ResNet18
+A continuación se realizará una breve descripción con las características principales de los elementos que se encuentran presentes en la arquitectura de la ResNet18.
+
+### Bloque Inicial:
+* Input: Imagen RGB (3 canales, ej: 224x224 píxeles).
+* 7x7 conv, 64, stride 2  (reduce tamaño espacial a la mitad: ej: 224x224 → 112x112):
+ ** Capa convolucional: Filtros 7x7 que extraen características básicas (bordes, texturas).
+ ** Salida: 64 mapas de características (como "fotocopias mejoradas" de la imagen original).
+* Maxpool, stride 2.
+
+
 
 
 <div align="center">
