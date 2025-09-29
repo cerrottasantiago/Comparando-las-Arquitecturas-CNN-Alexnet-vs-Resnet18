@@ -2,16 +2,13 @@
 
 # Informe de ResNet 18
 
-## Director
-### Cerrotta Santiago - Grupo de Fotónica Aplicada FRD UTN
-
-
-
 ## Estudiantes (Practicas profesionalizantes de la E.E.S.T N°1 “Luciano Reyes”)
 
 ### Laurreaga Sebastián
 ### Martinelli Gonzalo
 
+## Director
+### Cerrotta Santiago - Grupo de Fotónica Aplicada FRD UTN
 
 ## 1. ¿Por qué llevamos a cabo este informe?
 
