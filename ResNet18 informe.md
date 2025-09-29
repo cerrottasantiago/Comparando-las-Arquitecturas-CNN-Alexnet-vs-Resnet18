@@ -106,11 +106,11 @@ En la figura(1) se muestra el esquema de ResNet18 que incluye parte de su arquit
 
 
 <div align="center" justify-content="center">
-	<img src="img/Add-Resnet.png">
+	<img src="img/AddResNet.png">
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 2 - Suma residual de los feature map en ResNet </em></p>
 
-En el siguiente gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet.
+En el gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet.
 	
 ## Summary
 
