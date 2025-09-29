@@ -99,7 +99,7 @@ En la figura(1) se muestra el esquema de ResNet18 que incluye parte de su arquit
 
 
 <div align="center" justify-content="center">
-	<img src="img/resnet18-esquema-completo.png">
+	<img src="img/resnet18-esquema-completo.jpg">
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 1 - Arquitectura de ResNet18 con imagenes del proceso de su feature map </em></p>
 
