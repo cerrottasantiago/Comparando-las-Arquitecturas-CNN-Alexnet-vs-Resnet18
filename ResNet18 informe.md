@@ -100,21 +100,21 @@ En la figura(1) se muestra el esquema de ResNet18 que incluye parte de su arquit
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 1 - Arquitectura de ResNet18 con imagenes del proceso de su feature map </em></p>
 
-
+En el gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet.
 
 <div align="center" justify-content="center">
 	<img src="img/AddResNet.png">
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 2 - Suma residual de los feature map en ResNet </em></p>
 
-En el gráfico (Figura 2), se visualiza la estrategia de Resnet para preservar la información de capas anteriores. Al feature map de la capa anterior se le suma nuevos detalles o residuos detectados en el nuevo bloque F(x). El feature map de salida de la capa residual es la suma de las anteriores. En el esquema de la arquitectura se menciona como una capa de suma “Add”  aplicando a continuación una capa ReLU de ResNet.
+
+En la comparativa (Figura 3) se demuestra la igualdad entre el resultado que obtuvimos sumando los feature map manualmente y aplicando el ReLU predeterminado (el usado por ResNet) y concluímos en que los resultados son exactamente idénticos, en la barra de colores se muestra el valor de activación de ciertas partes del feature map (también se comprobó en el código si son iguales con el comando torch.allclose() ).
 
 <div align="center" justify-content="center">
 	<img src="img/Comparativa.png">
 </div>
 	 <p align="center" text-align="center" justify-content="center"><em> Figura 3 - Comparativa de la suma manual con el ADD de ResNet (Con ReLU aplicado) </em></p>
 
-En la Figura 3 se ve la comparación entre el resultado que obtuvimos sumando los feature map manualmente y aplicando el ReLU predeterminado (el usado por ResNet) y concluímos en que los resultados son exactamente idénticos, en la barra de colores se muestra el valor de activación de ciertas partes del feature map y se puede apreciar la igualdad de ambos (también se comprobó en el código si son iguales con el comando torch.allclose() ).
 
 ## Summary
 
