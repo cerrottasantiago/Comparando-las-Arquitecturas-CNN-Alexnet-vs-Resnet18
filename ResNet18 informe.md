@@ -123,7 +123,7 @@ aquí se muestra como ResNet18 maneja sus parámetros, como los calcula y tambie
 |Layer (type)|Output Shape|Cálculos|Parámetros |
 | :- | :- | :- | :- |
 |Conv2d-1|[-1, 64, 112, 112]|64 \* 3 \* 7 \* 7|9,408|
-|BatchNorm2d-2|[-1, 64, 112, 112]|` `64 \* 2|128|
+|BatchNorm2d-2|[-1, 64, 112, 112]|64 \* 2|128|
 |ReLU-3|[-1, 64, 112, 112] |-|0|
 |MaxPool2d-4|[-1, 64, 56, 56]|-|0|
 |Conv2d-5|[-1, 64, 56, 56]|64 \* 64 \* 3 \* 3|36,864|
